@@ -78,6 +78,7 @@
 
             <EditText
                 android:id="@+id/editResult"
+                android:enabled="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#F44336"
@@ -101,7 +102,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
             <Button
-                android:id="@+id/editSub"
+                android:id="@+id/btnSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hiệu"
@@ -111,7 +112,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
             <Button
-                android:id="@+id/editMul"
+                android:id="@+id/btnMul"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tích"
@@ -121,7 +122,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"/>
             <Button
-                android:id="@+id/editDiv"
+                android:id="@+id/btnDiv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thương"
