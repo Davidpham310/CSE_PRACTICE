@@ -44,6 +44,7 @@
                 tools:ignore="HardcodedText" />
 
             <EditText
+                android:id="@+id/editYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -51,6 +52,7 @@
         </TableRow>
         <TableRow>
             <Button
+                android:id="@+id/btnCustom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chuyển đổi"
@@ -69,8 +71,12 @@
                 tools:ignore="HardcodedText" />
 
             <EditText
+                android:background="#FFEB3B"
+                android:id="@+id/editCustomYear"
+                android:enabled="false"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:ems="10"
                 android:inputType="number" />
         </TableRow>
