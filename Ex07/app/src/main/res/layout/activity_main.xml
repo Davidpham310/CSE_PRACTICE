@@ -60,6 +60,8 @@
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
                 <EditText
+                    android:inputType="number"
+                    android:id="@+id/editA"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="13"/>
@@ -72,6 +74,8 @@
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
                 <EditText
+                    android:inputType="number"
+                    android:id="@+id/editB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="13"/>
@@ -84,6 +88,8 @@
                     android:layout_height="wrap_content"
                     tools:ignore="HardcodedText" />
                 <EditText
+                    android:inputType="number"
+                    android:id="@+id/editC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="13"/>
@@ -93,6 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/btnContinue"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -100,6 +107,7 @@
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
             <Button
+                android:id="@+id/btnSolve"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -108,6 +116,7 @@
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
             <Button
+                android:id="@+id/btnExit"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -116,6 +125,7 @@
                 tools:ignore="HardcodedText" />
         </LinearLayout>
         <TextView
+            android:id="@+id/txtResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
