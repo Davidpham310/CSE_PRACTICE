@@ -1,6 +1,11 @@
 package com.example.ex10;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +24,27 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        EditText a = findViewById(R.id.editA);
+        EditText b = findViewById(R.id.editB);
+        Button btn = findViewById(R.id.btnResult);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(a.getText().toString().isEmpty() || b.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "A và B không được rỗng", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Bundle input = new Bundle();
+                    int A = Integer.parseInt(a.getText().toString());
+                    int B = Integer.parseInt(b.getText().toString());
+                    Intent intent = new Intent(MainActivity.this , MainActivity2.class);
+                    input.putInt("A" , A);
+                    input.putInt("B" , B);
+                    intent.putExtra("data" , input);
+                    startActivity(intent);
+                }
+            }
         });
     }
 }

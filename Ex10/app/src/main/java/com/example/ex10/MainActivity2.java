@@ -1,6 +1,9 @@
 package com.example.ex10;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,5 +23,22 @@ public class MainActivity2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        TextView txtResult = findViewById(R.id.txtResult);
+        Button btnBack = findViewById(R.id.btnBack);
+        Intent intent = getIntent();
+        Bundle input = intent.getBundleExtra("data");
+        assert input != null;
+        int a = input.getInt("A");
+        int b = input.getInt("B");
+        String result;
+        if(a == 0 && b == 0){
+            result = "Vô số nghiệm";
+        }
+        else if (a == 0 && b != 0){
+            result = " Vô nghiệm";
+        }else {
+            result = String.format("%.2f", -b*1.0/a);
+        }
+        txtResult.setText(result);
     }
 }
