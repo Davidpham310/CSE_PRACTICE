@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TableLayout
@@ -46,6 +47,7 @@
                     android:text="Họ tên :"
                     tools:ignore="HardcodedText" />
                 <EditText
+                    android:id="@+id/editName"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:ems="13"
@@ -58,11 +60,12 @@
                     android:text="CMND : "
                     tools:ignore="HardcodedText" />
                 <EditText
+                    android:id="@+id/editID"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:ems="13"
                     android:maxLength="9"
-                    android:inputType="text"/>
+                    android:inputType="number"/>
             </TableRow>
         </TableLayout>
         <TextView
@@ -72,29 +75,34 @@
             android:gravity="center"
             android:background="#4496B6"
             tools:ignore="HardcodedText" />
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/radioGroup"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <RadioButton
+                android:id="@+id/radioHight"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Trung cấp"
                 tools:ignore="HardcodedText" />
             <RadioButton
+                android:id="@+id/radioCollege"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Cao đẳng"
                 tools:ignore="HardcodedText" />
             <RadioButton
+                android:id="@+id/radioUniversity"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Đại học"
                 android:checked="true"
                 tools:ignore="HardcodedText" />
-        </LinearLayout>
+        </RadioGroup>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,23 +114,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <CheckBox
+                android:id="@+id/checkNewsPaper"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Trung cấp"
+                android:text="Đọc báo"
                 tools:ignore="HardcodedText" />
             <CheckBox
+                android:id="@+id/checkReadBook"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Cao đẳng"
+                android:text="Đọc sách"
                 tools:ignore="HardcodedText" />
             <CheckBox
+                android:id="@+id/checkReadCoding"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Đại học"
-                android:checked="true"
+                android:text="Đọc coding"
                 tools:ignore="HardcodedText" />
         </LinearLayout>
         <TextView
@@ -133,6 +143,7 @@
             android:background="#4496B6"
             tools:ignore="HardcodedText" />
         <EditText
+            android:id="@+id/editAdditionalInformation"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:inputType="textMultiLine"
@@ -140,10 +151,12 @@
             android:gravity="top"
             android:scrollbars="vertical"/>
         <Button
+            android:id="@+id/btnSend"
             android:layout_gravity="center"
             android:text="Gửi thông tin "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
