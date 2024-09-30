@@ -16,6 +16,7 @@
         app:title="This is Main Activity" />
 
     <Button
+        android:id="@+id/btnMain"
         android:text="Open child Activity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
