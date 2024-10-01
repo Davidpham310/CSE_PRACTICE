@@ -2,7 +2,8 @@ package com.example.ex13;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +12,9 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    ImageButton btnPlay , btnPause;
+    ImageView btnPlay , btnPause;
     MediaPlayer mediaPlayer;
+    boolean isPlaying = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,5 +27,27 @@ public class MainActivity extends AppCompatActivity {
         });
         btnPlay = findViewById(R.id.btnPlay);
         btnPause = findViewById(R.id.btnPause);
+
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!isPlaying) {
+                    mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.music);
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+                    isPlaying = true;
+                }
+            }
+        });
+        btnPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                    mediaPlayer = null;
+                    isPlaying = false;
+                }
+            }
+        });
     }
 }
