@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/btnCallPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CALL PHONE"
@@ -22,6 +23,7 @@
             android:layout_marginVertical="5dp"
             tools:ignore="HardcodedText" />
         <Button
+            android:id="@+id/btnSendSMS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SEND SMS"

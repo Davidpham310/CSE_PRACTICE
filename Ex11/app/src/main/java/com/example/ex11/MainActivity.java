@@ -1,6 +1,9 @@
 package com.example.ex11;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,23 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        Button btnCallPhone , btnSendSMS;
+        btnSendSMS = findViewById(R.id.btnSendSMS);
+        btnCallPhone = findViewById(R.id.btnCallPhone);
+        btnCallPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this , Call_Phone.class);
+                startActivity(intent);
+            }
+        });
+        btnSendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this , Send_SMS.class);
+                startActivity(intent);
+            }
         });
     }
 }

@@ -24,12 +24,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
+            android:id="@+id/editPhoneCall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10" />
 
         <ImageButton
+            android:id="@+id/btnCall"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:scaleType="fitCenter"
@@ -37,6 +39,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btnBackCall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="BACK"
