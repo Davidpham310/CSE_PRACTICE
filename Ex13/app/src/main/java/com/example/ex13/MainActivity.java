@@ -42,11 +42,10 @@ public class MainActivity extends AppCompatActivity {
         btnPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mediaPlayer != null) {
                     mediaPlayer.release();
                     mediaPlayer = null;
                     isPlaying = false;
-                }
+                    finish();
             }
         });
     }
