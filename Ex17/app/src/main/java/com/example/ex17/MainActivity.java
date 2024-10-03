@@ -1,6 +1,8 @@
 package com.example.ex17;
 
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,18 +22,23 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtDate;
     EditText editWork , editHour , editMinute ;
     Button btnAdd;
     ListView listView;
-    ArrayList<String> arr;
+    static ArrayList<String> arr;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +51,32 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         arr = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1 , arr);
-        listView.setAdapter(adapter);
         Map();
         getDate();
+        getData();
         Event();
+    }
+
+    private void getData() {
+        SharedPreferences sharedPref = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        String json = sharedPref.getString("products", null);
+        if (json != null) {
+            try {
+                Type type = new TypeToken<ArrayList<String>>() {}.getType();
+                Gson gson = new Gson();
+
+                ArrayList<String> data = gson.fromJson(json, type);
+                arr.clear();
+                arr = data;
+                adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1 , arr);
+                adapter.notifyDataSetChanged();
+                listView.setAdapter(adapter);
+            }catch (Exception e){
+                Log.d("loi" , e.getMessage().toString());
+            }
+
+        }
+
     }
 
     private void getDate() {
@@ -60,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         // Định dạng đối tượng Date theo mẫu và in ra kết quả
         String formattedDate = formatter.format(currentDate);
         txtDate.setText("Hôm nay : " + formattedDate);
+
     }
 
     private void Event() {
@@ -71,8 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(Integer.parseInt(charSequence.toString()) < 24 && Integer.parseInt(charSequence.toString()) > 0){
-                    editHour.setText(charSequence.toString());
+                try {
+                    String input = charSequence.toString();
+                    if (!input.isEmpty()) {
+                        int time = Integer.parseInt(input);
+                        if (time > 24) {
+                            Toast.makeText(MainActivity.this, "Giờ chỉ được từ 00 đến 23", Toast.LENGTH_SHORT).show();
+                            editHour.setText("");  // Xóa nội dung
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    // Nếu không phải là số
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập chính xác", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -89,8 +128,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(Integer.parseInt(charSequence.toString()) < 59 && Integer.parseInt(charSequence.toString()) > 0){
-                    editMinute.setText(charSequence.toString());
+                try {
+                    String input = charSequence.toString();
+                    if (!input.isEmpty()) {
+                        int time = Integer.parseInt(input);
+                        if (time > 60) {
+                            Toast.makeText(MainActivity.this, "Phút chỉ được từ 00 đến 59", Toast.LENGTH_SHORT).show();
+                            editMinute.setText("");  // Xóa nội dung
+                        }
+                    }
+                } catch (NumberFormatException e) {
+                    // Nếu không phải là số
+                    Toast.makeText(MainActivity.this, "Vui lòng nhập chính xác", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -123,16 +172,26 @@ public class MainActivity extends AppCompatActivity {
                     editWork.setText("");
                     editHour.setText("");
                     editMinute.setText("");
+                    saveProducts();
                 }
             }
         });
+    }
+
+    private void saveProducts() {
+        SharedPreferences sharedPref = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(arr);
+        editor.putString("products", json);
+        editor.apply();
     }
 
     private void Map() {
         txtDate = findViewById(R.id.txtDate);
         editHour = findViewById(R.id.editHour);
         editMinute = findViewById(R.id.editMinute);
-        editWork = findViewById(R.id.txtWork);
+        editWork = findViewById(R.id.editWork);
         btnAdd = findViewById(R.id.btnAdd);
         listView = findViewById(R.id.listWork);
     }
