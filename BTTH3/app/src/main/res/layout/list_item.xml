@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp">
+    <ImageView
+        android:id="@+id/img"
+        android:scaleType="fitCenter"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp">
+        <TextView
+            android:id="@+id/txtID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123345"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pham Xuan Truong"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:textStyle="bold"
+            android:textColor="#F44336"
+            android:id="@+id/txtGPA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.0"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+</LinearLayout>
